@@ -1,0 +1,56 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Login Form</title>
+<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<div class="row">
+			<div class="col-md-3 offset-md-1 text-center">
+				<a href="*">manage</a>
+			</div>
+			<div class="col-md-3 offset-md-4 text-center">
+				<a href="*">logout</a>
+			</div>
+		</div>
+	</header>
+
+	<div class="container" role="main">
+		<section id="title">
+			<div class="row ">
+				<div class="col-md-6 offset-md-3 text-center">
+					<h1>TODO</h1>
+				</div>
+			</div>
+		</section>
+		<section id="form">
+			<div class="row "></div>
+		</section>
+		<section id="list">
+			<div class="row ">
+				<div class="table-responsive col-md-10 offset-md-1">
+					<table class="table table-bordered">
+						<tr>
+							<th>内容</th>
+							<th>編集</th>
+							<th>完了</th>
+						</tr>
+						<tr th:each="todo:${list}">
+							<td th:text="${todo.body}"></td>
+							<td>update</td>
+							<td>exit</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
