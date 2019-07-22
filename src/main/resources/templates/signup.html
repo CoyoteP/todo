@@ -19,7 +19,7 @@
 			</div>
 			<div class="col-md-3 offset-md-4 text-center">
 				<form role="form" id="logout" th:action="@{/login}" method="get">
-					<button type="submit">ログイン</button>
+					<button type="submit">login</button>
 				</form>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 		<br />
 		<p th:text="${result}"></p>
 		<form class="signup" method="post" th:action="@{'/signup'}">
-			<h2 class="form-signin-heading">新規登録フォーム</h2>
+			<h2 class="form-signin-heading">signup form</h2>
 			<input type="text" class="form-control" name="userid"
 				placeholder="userid" /> <input
 				type="password" class="form-control" name="password"
@@ -38,25 +38,6 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 		</form>
 	</div>
-	<p th:text="${menu}" />
-	<section id="list">
-		<div class="row ">
-			<div class="table-responsive col-md-10 offset-md-1">
-				<table class="table table-bordered">
-					<tr>
-						<th>内容</th>
-						<th>編集</th>
-						<th>完了</th>
-					</tr>
-					<tr th:each="user:${list}" th:object="${user}">
-						<td th:text="*{userid}"></td>
-						<td>update</td>
-						<td>exit</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</section>
 </body>
 
 </html>

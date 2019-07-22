@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-md-3 offset-md-4 text-center">
 				<form role="form" id="logout" th:action="@{/logout}" method="post">
-					<button type="submit">ログアウト</button>
+					<button type="submit">logout</button>
 				</form>
 			</div>
 		</div>
@@ -51,9 +51,9 @@
 				<div class="table-responsive col-md-10 offset-md-1">
 					<table class="table table-bordered">
 						<tr>
-							<th>内容</th>
-							<th>編集</th>
-							<th>完了</th>
+							<th>body</th>
+							<th>edit</th>
+							<th>done</th>
 						</tr>
 
 						<tr th:each="todo:${todos}" th:object="${todo}">

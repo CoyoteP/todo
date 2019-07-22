@@ -11,6 +11,20 @@
 </head>
 
 <body>
+<header>
+		<div class="row">
+			<div class="col-md-3 offset-md-1 text-center">
+				<form role="form" id="manage" th:action="@{/todo}" method="get">
+					<button type="submit">todo</button>
+				</form>
+			</div>
+			<div class="col-md-3 offset-md-4 text-center">
+				<form role="form" id="logout" th:action="@{/logout}" method="post">
+					<button type="submit">logout</button>
+				</form>
+			</div>
+		</div>
+	</header>
 	<div class="container">
 		<br />
 		<p th:text="${result}"></p>
@@ -23,13 +37,13 @@
 				class="form-control" name="password-retype"
 				placeholder="Password-retype" required="" /> </label>
 			<button class="btn btn-lg btn-primary btn-block" type="submit"
-				name="update">更新</button>
+				name="update">update</button>
 		</form>
 		<br>
 		<form class="form-signin" method="post" th:action="@{'/manage'}">
 
 			<button class="btn btn-lg btn-primary btn-block" type="submit"
-				name="delete">削除</button>
+				name="delete">delete user</button>
 		</form>
 	</div>
 </body>

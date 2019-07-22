@@ -41,14 +41,14 @@ public class SignupController {
 				User user = new User(userid, password);
 				userRepo.save(user);
 				return "login";
-			}else {
+			} else {
 				result = "登録済みのuseridです";
 			}
-			
-		}else {
+
+		} else {
 			result = "パスワードが異なります";
 		}
-		model.addAttribute("result",result);
+		model.addAttribute("result", result);
 		return "signup";
 	}
 }

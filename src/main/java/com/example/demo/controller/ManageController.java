@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +12,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.TodoRepository;
 import com.example.demo.UserRepository;
-import com.example.demo.model.Todo;
-import com.example.demo.model.User;
 
 @Controller
 public class ManageController {
@@ -30,7 +27,7 @@ public class ManageController {
         return "manage";
     }
 	@PostMapping(value = "/manage",params = "update")
-    public String update(RedirectAttributes attributes,Principal principal, @RequestParam("password") String password_old,@RequestParam("password") String password,@RequestParam("password-retype") String password_retype) {
+    public String update(RedirectAttributes attributes,Principal principal, @RequestParam("password-old") String password_old,@RequestParam("password") String password,@RequestParam("password-retype") String password_retype) {
 		
 		String result = "";
 		if(userRepo.countByUseridIsAndPasswordIs(principal.getName(),password_old) == 1) {

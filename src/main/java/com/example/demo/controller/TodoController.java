@@ -27,7 +27,6 @@ public class TodoController {
 	@GetMapping(value = "/todo")
     public String get(Model model,Principal principal) {
 		List<Todo> list = todoRepo.findByUseridIs(principal.getName());
-        model.addAttribute("messages", "party boy");
         model.addAttribute("todos",list);
         return "todo";
     }
