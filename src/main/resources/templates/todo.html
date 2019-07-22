@@ -14,10 +14,14 @@
 	<header>
 		<div class="row">
 			<div class="col-md-3 offset-md-1 text-center">
-				<a href="*"><h3>manage</h3></a>
+				<form role="form" id="manage" th:action="@{/manage}" method="get">
+					<button type="submit">manage</button>
+				</form>
 			</div>
 			<div class="col-md-3 offset-md-4 text-center">
-				<a href="*"><h3>logout</h3></a>
+				<form role="form" id="logout" th:action="@{/logout}" method="post">
+					<button type="submit">ログアウト</button>
+				</form>
 			</div>
 		</div>
 	</header>
@@ -31,7 +35,16 @@
 			</div>
 		</section>
 		<section id="form">
-			<div class="row "></div>
+			<form th:action="@{/todo/put}" method="post">
+				<div class="row ">
+					<div class="col-md-8 offset-md-1">
+						<input type="text" id="todo" name="todo"></input>
+					</div>
+					<div class="col-md-2">
+						<input type="submit">
+					</div>
+				</div>
+			</form>
 		</section>
 		<section id="list">
 			<div class="row ">
@@ -42,8 +55,8 @@
 							<th>編集</th>
 							<th>完了</th>
 						</tr>
-						<tr th:each="todo:${list}">
-							<td th:text="${todo.body}"></td>
+						<tr th:each="todo:${todos}" th:object="${todo}">
+							<td th:text="*{body}"></td>
 							<td>update</td>
 							<td>exit</td>
 						</tr>
