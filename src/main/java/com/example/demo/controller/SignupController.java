@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.TodoRepository;
 import com.example.demo.UserRepository;
@@ -22,33 +23,32 @@ import com.example.demo.model.User;
 public class SignupController {
 	@Autowired
 	UserRepository userRepo;
-	
+
 	@Autowired
 	TodoRepository todoRepo;
-	
+
 	@GetMapping("/signup")
-    public String get(Model model,Principal principal) {
-        model.addAttribute("message", "Hello Thymeleaf!! how are you?");
-        model.addAttribute("menu", principal.getName());
-        List<User> list=userRepo.findAll();
-        model.addAttribute("list", list);
-        for(User a: list) {
-        	System.out.println(a.getUserid());
-        }
-        return "signup";
-    }
-	
+	public String get(Model model, Principal principal) {
+		return "signup";
+	}
+
 	@PostMapping("/signup")
-    public String post(Model model) {
-        model.addAttribute("message", "Hello Thymeleaf!! how are you?");
-        model.addAttribute("menu", "home servlet model");
-        List<User> list=userRepo.findAll();
-        model.addAttribute("users", list);
-        for(User user: list) {
-        	System.out.println(user.getUserid());
-        }
-        return "signup";
-    }
+	public String post(Model model, @RequestParam("userid") String userid, @RequestParam("password") String password,
+			@RequestParam("password-retype") String password_retype) {
+		String result = "";
+		if (password.equals(password_retype)) {
+			if (userRepo.countByUserid(userid) == 0) {
+				User user = new User(userid, password);
+				userRepo.save(user);
+				return "login";
+			}else {
+				result = "登録済みのuseridです";
+			}
+			
+		}else {
+			result = "パスワードが異なります";
+		}
+		model.addAttribute("result",result);
+		return "signup";
+	}
 }
-
-

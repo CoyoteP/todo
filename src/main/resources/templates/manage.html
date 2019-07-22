@@ -3,24 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <title>Login Form</title>
-<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
 	<div class="container">
-	<br />
+		<br />
 		<p th:text="${result}"></p>
-		<form class="form-signin" method="post" th:action="@{'/manage/update'}">
+		<form class="form-signin" method="post" th:action="@{'/manage'}">
 			<h2 class="form-signin-heading">Please login</h2>
-			<input type="text" class="form-control" name="old-password"
-				placeholder="UserId" required="" autofocus="" /> <input
+			<input type="text" class="form-control" name="password-old"
+				placeholder="password-old" required="" autofocus="" /> <input
 				type="text" class="form-control" name="password"
-				placeholder="Password" required="" /> <input
-				type="text" class="form-control" name="password-retype"
-				placeholder="Password" required="" />
-			</label>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+				placeholder="Password" required="" /> <input type="text"
+				class="form-control" name="password-retype"
+				placeholder="Password-retype" required="" /> </label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				name="update">更新</button>
+		</form>
+		<br>
+		<form class="form-signin" method="post" th:action="@{'/manage'}">
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				name="delete">削除</button>
 		</form>
 	</div>
 </body>

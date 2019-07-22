@@ -21,7 +21,8 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Id
 	@Column(nullable = false)
 	private String userid;
@@ -31,7 +32,16 @@ public class User implements Serializable {
 	private String enable;
 	
 	private String role;
-
+	public User() {
+		
+	}
+	public User(String userid,String password) {
+		this.userid = userid;
+		this.password = password;
+		this.enable = "1";
+		this.role = "user";
+	}
+	
 	public String getUserid() {
 		return userid;
 	}

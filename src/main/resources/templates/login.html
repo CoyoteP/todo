@@ -3,13 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <title>Login Form</title>
-<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+	<header>
+		<div class="row">
+			<div class="col-md-3 offset-md-1 text-center">
+				<form role="form" id="manage" th:action="@{/manage}" method="get"></form>
+			</div>
+			<div class="col-md-3 offset-md-4 text-center">
+				<form role="form" id="logout" th:action="@{/signup}" method="get">
+					<button type="submit">サインイン</button>
+				</form>
+			</div>
+		</div>
+	</header>
 	<div class="container">
-	<br />
+		<br />
 		<div th:if="${param.error}">Invalid username and password.</div>
 		<form class="form-signin" method="post" th:action="@{'/auth'}">
 			<h2 class="form-signin-heading">Please login</h2>

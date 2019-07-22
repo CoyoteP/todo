@@ -12,8 +12,17 @@ import com.example.demo.model.User;
 @Transactional
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
-	
+
 	@Modifying
 	@Query("update User u set u.password = :password where u.userid = :userid ")
-	int updateByUserid(@Param("password")String password, @Param("userid")String userid);
+	int updateByUserid(@Param("password") String password, @Param("userid") String userid);
+
+	@Modifying
+	@Query("delete from User u where u.userid = :userid ")
+	int deleteByUserid(@Param("userid") String userid);
+
+	long countByUseridIsAndPasswordIs(@Param("userid") String userid, @Param("password") String password);
+
+	long countByUserid(@Param("userid") String userid);
+
 }

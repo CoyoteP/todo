@@ -35,13 +35,13 @@
 			</div>
 		</section>
 		<section id="form">
-			<form th:action="@{/todo/put}" method="post">
+			<form th:action="@{/todo}" method="post">
 				<div class="row ">
 					<div class="col-md-8 offset-md-1">
 						<input type="text" id="todo" name="todo"></input>
 					</div>
 					<div class="col-md-2">
-						<input type="submit">
+						<input type="submit" name="insert">
 					</div>
 				</div>
 			</form>
@@ -55,10 +55,17 @@
 							<th>編集</th>
 							<th>完了</th>
 						</tr>
+
 						<tr th:each="todo:${todos}" th:object="${todo}">
-							<td th:text="*{body}"></td>
-							<td>update</td>
-							<td>exit</td>
+							<td>
+								<form th:action="@{/todo}" method="post" th:id="*{todoid}" ></form>
+									<input type="hidden" name="todoid" th:form="*{todoid}" th:value="*{todoid}" /><input
+										type="text" name="body" th:form="*{todoid}" th:value="*{body}"/><input
+										type="hidden" name="todoflg" th:form="*{todoid}" th:value="*{todoflg}"/> <input
+										type="hidden" name="userid" th:form="*{todoid}" th:value="*{userid}"/>
+							</td>
+							<td><input type="submit" name="update" th:form="*{todoid}"></td>
+							<td><input type="submit" name="delete" th:form="*{todoid}"></td>
 						</tr>
 					</table>
 				</div>

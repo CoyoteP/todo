@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,16 +24,28 @@ public class TodoController {
 	@Autowired
 	TodoRepository todoRepo;
 	
-	@GetMapping("/todo")
+	@GetMapping(value = "/todo")
     public String get(Model model,Principal principal) {
 		List<Todo> list = todoRepo.findByUseridIs(principal.getName());
         model.addAttribute("messages", "party boy");
         model.addAttribute("todos",list);
         return "todo";
     }
-	@PostMapping("/todo/put")
+	@PostMapping(value = "/todo",params = "insert")
     public String put(Model model,Principal principal, @RequestParam("todo") String data) {
-		Todo todo = new Todo(null,data,"1","admin");
+		Todo todo = new Todo(null,data,"1",principal.getName());
+		todoRepo.save(todo);
+        return "redirect:/todo";
+    }
+	@PostMapping(value = "/todo",params = "delete")
+    public String delete(Model model,Principal principal, @ModelAttribute Todo todo) {
+		System.out.println(todo.getTodoid());
+		todoRepo.delete(todo);
+        return "redirect:/todo";
+    }
+	@PostMapping(value = "/todo",params = "update")
+    public String update(Model model,Principal principal, @ModelAttribute Todo todo) {
+		System.out.println(todo.getTodoid());
 		todoRepo.save(todo);
         return "redirect:/todo";
     }
