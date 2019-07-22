@@ -38,11 +38,14 @@ public class TodoController {
     }
 	@PostMapping(value = "/todo",params = "delete")
     public String delete(Model model,Principal principal, @ModelAttribute Todo todo) {
+		System.out.println("delete:" + todo.getTodoid());
 		todoRepo.deleteByTodoid(todo.getTodoid());
         return "redirect:/todo";
     }
 	@PostMapping(value = "/todo",params = "update")
     public String update(Model model,Principal principal, @ModelAttribute Todo todo) {
+		System.out.println("update:" + todo.getTodoid());
+
 		todoRepo.save(todo);
         return "redirect:/todo";
     }
