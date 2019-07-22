@@ -6,3 +6,17 @@ create sequence "TODOID_SEQ"
     nocache
     cycle
     noorder
+
+create table users(
+	userid VARCHAR(255) primary key,
+	password VARCHAR(255),
+	enable varchar(255),
+    role varchar(255)
+)
+
+create table todo(
+    todoid varchar(255) primary key,
+    body varchar(255),
+    todoflg varchar(255),
+    userid varchar(255)
+    )

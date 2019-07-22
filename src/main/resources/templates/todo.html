@@ -35,15 +35,18 @@
 				</div>
 			</div>
 		</section>
-		<br /><br />
+		<br />
+		<br />
 		<section id="form">
 			<form th:action="@{/todo}" method="post">
 				<div class="row ">
 					<div class="col-md-7 offset-md-2">
-						<input type="text" class="form-control" id="todo" name="todo" placeholder="作業内容を登録"></input>
+						<input type="text" class="form-control" id="todo" name="todo"
+							placeholder="作業内容を登録"></input>
 					</div>
 					<div class="col-md-2">
-						<input type="submit" class="btn btn-primary" name="insert" value="登録">
+						<input type="submit" class="btn btn-primary" name="insert"
+							value="登録">
 					</div>
 				</div>
 			</form>
@@ -56,13 +59,12 @@
 
 						<tr th:each="todo:${todos}" th:object="${todo}">
 							<td>
-								<form th:action="@{/todo}" method="post" th:id="*{todoid}" ></form>
+								<form th:action="@{/todo}" method="post" th:id="*{todoid}"></form>
 								<input type="hidden" name="todoid" th:form="*{todoid}"
-								th:value="*{todoid}" /><input type="text" class="form-control" name="body"
-								 th:form="*{todoid}" th:value="*{body}" /><input
-								type="hidden" name="todoflg" th:form="*{todoid}"
-								th:value="*{todoflg}" /> <input type="hidden" name="userid"
-								th:form="*{todoid}" th:value="*{userid}" />
+								th:value="*{todoid}" /><input type="text" class="form-control"
+								name="body" th:form="*{todoid}" th:value="*{body}" /> <input
+								type="hidden" name="userid" th:form="*{todoid}"
+								th:value="*{userid}" />
 							</td>
 							<td><input type="submit" class="btn btn-primary"
 								name="update" th:form="*{todoid}" value="変更"></td>
