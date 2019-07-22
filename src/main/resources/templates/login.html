@@ -8,26 +8,9 @@
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 
 <body>
-
-	<header>
-		<div class="row">
-			<div class="col-md-3 offset-md-1 text-center">
-				<img src="/img/logo_blue.png" th:src="@{/img/logo_blue.png}"
-					class="img-fluid"></img>
-			</div>
-			<div class="col-md-3 offset-md-4 text-center">
-				<form role="form" id="register" th:action="@{/register}"
-					method="get">
-					<br>
-					<button class="btn btn-outline-light" type="submit">登録</button>
-				</form>
-			</div>
-		</div>
-	</header>
 	<br />
 	<br />
 	<div class="container">
@@ -35,25 +18,30 @@
 		<section id="title">
 			<div class="row ">
 				<div class="col-md-6 offset-md-3 text-center">
-					<h1>ログイン</h1>
+					<h1>TODO</h1>
 				</div>
 			</div>
 		</section>
+		<br /> <br /> <br /> <br /> <br /> <br />
 		<div class="row">
 			<div class="col-md-6 offset-md-3"　>
-				<form class="form-signin" method="post" th:action="@{'/auth'}" id="login">
-					<input type="text"  class="form-control" name="userid"
-						placeholder="ユーザID" required="" autofocus="" /> <input
-						type="password" class="form-control" name="password"
-						placeholder="パスワード" required="" /> <label class="checkbox">
-						<input type="checkbox" value="remember-me" id="rememberMe"
-						name="rememberMe"> Remember me
-					</label>
+				<form class="form-signin" method="post" th:action="@{'/auth'}"
+					id="login">
+					<div class="form-inline">
+						<label class="col-md-2">ID:</label><input type="text"
+							class="form-control col-md-10" name="userid" required="" />
+					</div>
+					<br />
+					<div class="form-inline">
+						<label class="col-md-2">Pass:</label><input type="password"
+							class="form-control col-md-10" name="password" required="" />
+					</div>
 				</form>
+				<br />
 				<div class="row">
 					<div class="col-md-4 offset-md-1">
 						<form method="get" th:action="@{'/register'}">
-							<button class="btn btn-lg btn-primary btn-block" type="submit">登録</button>
+							<button class="btn btn-lg btn-outline-primary btn-block" type="submit">登録へ</button>
 						</form>
 					</div>
 					<div class="col-md-4 offset-md-2">

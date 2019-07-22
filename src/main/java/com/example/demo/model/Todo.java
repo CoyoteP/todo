@@ -28,12 +28,10 @@ public class Todo implements Serializable {
 	@Column(nullable = false)
 	private Integer todoid;
 	private String body = "";
-	private String todoflg = "";
 	private String userid = "";
-	public Todo(Integer todoid, String body, String todoflg, String userid) {
+	public Todo(Integer todoid, String body, String userid) {
 		this.todoid = todoid;
 		this.body = body;
-		this.todoflg = todoflg;
 		this.userid = userid;
 	}
 	public Todo() {
@@ -55,11 +53,5 @@ public class Todo implements Serializable {
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
-	}
-	public String getTodoflg() {
-		return todoflg;
-	}
-	public void setTodoflg(String todoflg) {
-		this.todoflg = todoflg;
 	}
 }

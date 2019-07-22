@@ -7,26 +7,10 @@
 
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/css/main.css}" />
 <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<header>
-		<div class="row">
-			<div class="col-md-3 offset-md-1 text-center">
-				<form role="form" id="manage" th:action="@{/manage}" method="get">
-					<button class="btn btn-outline-light" type="submit">ユーザ編集</button>
-				</form>
-			</div>
-			<div class="col-md-3 offset-md-4 text-center">
-				<form role="form" id="logout" th:action="@{/logout}" method="post">
-					<button class="btn btn-outline-light" type="submit">ログアウト</button>
-				</form>
-			</div>
-		</div>
-	</header>
-
 	<div class="container" role="main">
 		<section id="title">
 			<div class="row ">
@@ -35,43 +19,46 @@
 				</div>
 			</div>
 		</section>
-		<br /><br />
+		<br /> <br /> <br /> <br /> <br /> <br /> <br />
+		<section id="list">
+			<div class="row ">
+				<div class="col-md-8 offset-md-2">
+					<form th:action="@{/todo}" method="post" th:object="${todoForm}">
+						<div class="form-group">
+							<div class="checkbox custom-control custom-checkbox"
+								th:each="todo:${todos}">
+								<label> <input type="checkbox" 
+									name="list"
+									th:value="${todo.todoid}" th:text="${todo.body}"
+									th:field="*{list}" />
+								</label>
+							</div>
+							<div class="col-md-2 offset-md-10">
+								<input type="submit" class="btn btn-primary" name="delete"
+									value="完了">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<br /> <br /> <br />
 		<section id="form">
 			<form th:action="@{/todo}" method="post">
 				<div class="row ">
-					<div class="col-md-7 offset-md-2">
-						<input type="text" class="form-control" id="todo" name="todo" placeholder="作業内容を登録"></input>
+					<div class="col-md-8 offset-md-2">
+						<input type="text" class="form-control" id="todo" name="todo"
+							placeholder="作業内容を登録"></input>
+
+						<div class="col-md-2 offset-md-10">
+
+							<input type="submit" class="btn btn-primary" name="insert"
+								value="登録">
+						</div>
 					</div>
-					<div class="col-md-2">
-						<input type="submit" class="btn btn-primary" name="insert" value="登録">
-					</div>
+
 				</div>
 			</form>
-		</section>
-		<br />
-		<section id="list">
-			<div class="row ">
-				<div class="table-responsive col-md-8 offset-md-2">
-					<table class="table table-bordered">
-
-						<tr th:each="todo:${todos}" th:object="${todo}">
-							<td>
-								<form th:action="@{/todo}" method="post" th:id="*{todoid}" ></form>
-								<input type="hidden" name="todoid" th:form="*{todoid}"
-								th:value="*{todoid}" /><input type="text" class="form-control" name="body"
-								 th:form="*{todoid}" th:value="*{body}" /><input
-								type="hidden" name="todoflg" th:form="*{todoid}"
-								th:value="*{todoflg}" /> <input type="hidden" name="userid"
-								th:form="*{todoid}" th:value="*{userid}" />
-							</td>
-							<td><input type="submit" class="btn btn-primary"
-								name="update" th:form="*{todoid}" value="変更"></td>
-							<td><input type="submit" class="btn btn-primary"
-								name="delete" th:form="*{todoid}" value="完了"></td>
-						</tr>
-					</table>
-				</div>
-			</div>
 		</section>
 	</div>
 </body>

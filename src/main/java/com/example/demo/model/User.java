@@ -21,27 +21,29 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	@Id
 	@Column(nullable = false)
 	private String userid;
-
 	private String password;
-	
+	private String birthday;
+	private String username;
 	private String enable;
-	
 	private String role;
+
 	public User() {
-		
+
 	}
-	public User(String userid,String password) {
+
+	public User(String userid, String password, String birthday, String username) {
 		this.userid = userid;
 		this.password = password;
+		this.birthday = birthday;
+		this.username = username;
 		this.enable = "1";
 		this.role = "user";
 	}
-	
+
 	public String getUserid() {
 		return userid;
 	}
@@ -57,7 +59,22 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getBirthday() {
+		return birthday;
+	}
 
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	public String getEnable() {
 		return enable;
 	}

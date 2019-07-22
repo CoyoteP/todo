@@ -7,49 +7,60 @@
 
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-<link rel="stylesheet" th:href="@{/css/main.css}" />
 <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<header>
-		<div class="row">
-			<div class="col-md-3 offset-md-1 text-center">
-				<img src="/img/logo_blue.png" th:src="@{/img/logo_blue.png}"
-					class="img-fluid"></img>
-			</div>
-			<div class="col-md-3 offset-md-4 text-center">
-				<form role="form" id="logout" th:action="@{/login}" method="get">
-					<br>
-					<button class="btn btn-outline-light" type="submit">ログイン</button>
-				</form>
-			</div>
-		</div>
-	</header>
 	<br />
 	<br />
 	<div class="container">
-
+		<br />
 		<section id="title">
 			<div class="row ">
 				<div class="col-md-6 offset-md-3 text-center">
-					<h1>ユーザ登録</h1>
+					<h1>TODO</h1>
 				</div>
 			</div>
 		</section>
+		<br /> <br /> <br /> <br /> <br /> <br />
 		<div class="row">
 			<div class="col-md-6 offset-md-3"　>
-				<p th:text="${result}"></p>
-				<form class="signup" method="post" th:action="@{'/signup'}">
-					<input type="text" class="form-control" name="userid"
-						placeholder="ユーザID" /> <input type="password"
-						class="form-control" name="password" placeholder="パスワード"
-						required="" /> <input type="password" class="form-control"
-						name="password-retype" placeholder="パスワード(再入力)" required="" />
-					<div class="col-md-4 offset-md-4">
-						<button class="btn btn-lg btn-primary btn-block" type="submit">登録</button>
+				<form class="form-signin" method="post" th:action="@{'/register'}"
+					id="register">
+					<div class="form-inline">
+						<label class="col-md-3">ID:</label><input type="text"
+							class="form-control col-md-9" name="userid" required="" />
+					</div>
+					<br />
+					<div class="form-inline">
+						<label class="col-md-3">Pass:</label><input type="password"
+							class="form-control col-md-9" name="password" required="" />
+					</div>
+					<br />
+
+					<div class="form-inline">
+						<label class="col-md-3">生年月日:</label><input type="birthday"
+							class="form-control col-md-9" name="birthday" required="" />
+					</div>
+					<br />
+
+					<div class="form-inline">
+						<label class="col-md-3">名前:</label><input type="username"
+							class="form-control col-md-9" name="username" required="" />
 					</div>
 				</form>
+				<br />
+				<div class="row">
+					<div class="col-md-4 offset-md-1">
+						<form method="get" th:action="@{'/login'}">
+							<button class="btn btn-lg btn-outline-primary btn-block" type="submit">ログインへ</button>
+						</form>
+					</div>
+					<div class="col-md-4 offset-md-2">
+						<button class="btn btn-lg btn-primary btn-block" form="register"
+							type="submit">Login</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
