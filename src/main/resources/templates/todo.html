@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Login Form</title>
+<title>Rtina</title>
 <script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
 
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" th:href="@{/css/main.css}" />
 <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
@@ -15,12 +16,12 @@
 		<div class="row">
 			<div class="col-md-3 offset-md-1 text-center">
 				<form role="form" id="manage" th:action="@{/manage}" method="get">
-					<button type="submit">manage</button>
+					<button class="btn btn-outline-light" type="submit">ユーザ編集</button>
 				</form>
 			</div>
 			<div class="col-md-3 offset-md-4 text-center">
 				<form role="form" id="logout" th:action="@{/logout}" method="post">
-					<button type="submit">ログアウト</button>
+					<button class="btn btn-outline-light" type="submit">ログアウト</button>
 				</form>
 			</div>
 		</div>
@@ -34,38 +35,39 @@
 				</div>
 			</div>
 		</section>
+		<br /><br />
 		<section id="form">
 			<form th:action="@{/todo}" method="post">
 				<div class="row ">
-					<div class="col-md-8 offset-md-1">
-						<input type="text" id="todo" name="todo"></input>
+					<div class="col-md-7 offset-md-2">
+						<input type="text" class="form-control" id="todo" name="todo" placeholder="作業内容を登録"></input>
 					</div>
 					<div class="col-md-2">
-						<input type="submit" name="insert">
+						<input type="submit" class="btn btn-primary" name="insert" value="登録">
 					</div>
 				</div>
 			</form>
 		</section>
+		<br />
 		<section id="list">
 			<div class="row ">
-				<div class="table-responsive col-md-10 offset-md-1">
+				<div class="table-responsive col-md-8 offset-md-2">
 					<table class="table table-bordered">
-						<tr>
-							<th>内容</th>
-							<th>編集</th>
-							<th>完了</th>
-						</tr>
 
 						<tr th:each="todo:${todos}" th:object="${todo}">
 							<td>
 								<form th:action="@{/todo}" method="post" th:id="*{todoid}" ></form>
-									<input type="hidden" name="todoid" th:form="*{todoid}" th:value="*{todoid}" /><input
-										type="text" name="body" th:form="*{todoid}" th:value="*{body}"/><input
-										type="hidden" name="todoflg" th:form="*{todoid}" th:value="*{todoflg}"/> <input
-										type="hidden" name="userid" th:form="*{todoid}" th:value="*{userid}"/>
+								<input type="hidden" name="todoid" th:form="*{todoid}"
+								th:value="*{todoid}" /><input type="text" class="form-control" name="body"
+								 th:form="*{todoid}" th:value="*{body}" /><input
+								type="hidden" name="todoflg" th:form="*{todoid}"
+								th:value="*{todoflg}" /> <input type="hidden" name="userid"
+								th:form="*{todoid}" th:value="*{userid}" />
 							</td>
-							<td><input type="submit" name="update" th:form="*{todoid}"></td>
-							<td><input type="submit" name="delete" th:form="*{todoid}"></td>
+							<td><input type="submit" class="btn btn-primary"
+								name="update" th:form="*{todoid}" value="変更"></td>
+							<td><input type="submit" class="btn btn-primary"
+								name="delete" th:form="*{todoid}" value="完了"></td>
 						</tr>
 					</table>
 				</div>

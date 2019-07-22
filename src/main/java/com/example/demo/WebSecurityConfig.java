@@ -22,12 +22,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	// not using seculity folder
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**", "/image/**", "/js/**", "/webjars/**");
+		web.ignoring().antMatchers("/css/**", "/img/**","/static/img/**", "/js/**", "/webjars/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/signup").permitAll().anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/register").permitAll().anyRequest().authenticated();
 		http.formLogin().loginProcessingUrl("/auth").loginPage("/login").failureUrl("/login?error")
 				.defaultSuccessUrl("/todo", false).usernameParameter("userid").passwordParameter("password").and()
 				.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")

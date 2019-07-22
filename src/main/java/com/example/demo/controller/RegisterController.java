@@ -20,19 +20,19 @@ import com.example.demo.UserRepository;
 import com.example.demo.model.User;
 
 @Controller
-public class SignupController {
+public class RegisterController {
 	@Autowired
 	UserRepository userRepo;
 
 	@Autowired
 	TodoRepository todoRepo;
 
-	@GetMapping("/signup")
+	@GetMapping("/register")
 	public String get(Model model, Principal principal) {
-		return "signup";
+		return "register";
 	}
 
-	@PostMapping("/signup")
+	@PostMapping("/register")
 	public String post(Model model, @RequestParam("userid") String userid, @RequestParam("password") String password,
 			@RequestParam("password-retype") String password_retype) {
 		String result = "";
@@ -42,13 +42,13 @@ public class SignupController {
 				userRepo.save(user);
 				return "login";
 			}else {
-				result = "登録済みのuseridです";
+				result = "登録済みのユーザIDです";
 			}
 			
 		}else {
 			result = "パスワードが異なります";
 		}
 		model.addAttribute("result",result);
-		return "signup";
+		return "register";
 	}
 }

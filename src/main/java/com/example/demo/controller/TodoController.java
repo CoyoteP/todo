@@ -26,8 +26,7 @@ public class TodoController {
 	
 	@GetMapping(value = "/todo")
     public String get(Model model,Principal principal) {
-		List<Todo> list = todoRepo.findByUseridIs(principal.getName());
-        model.addAttribute("messages", "party boy");
+		List<Todo> list = todoRepo.findByUseridIsAndTodoflgIs(principal.getName(), "1");
         model.addAttribute("todos",list);
         return "todo";
     }
@@ -39,13 +38,11 @@ public class TodoController {
     }
 	@PostMapping(value = "/todo",params = "delete")
     public String delete(Model model,Principal principal, @ModelAttribute Todo todo) {
-		System.out.println(todo.getTodoid());
-		todoRepo.delete(todo);
+		todoRepo.deleteByTodoid(todo.getTodoid());
         return "redirect:/todo";
     }
 	@PostMapping(value = "/todo",params = "update")
     public String update(Model model,Principal principal, @ModelAttribute Todo todo) {
-		System.out.println(todo.getTodoid());
 		todoRepo.save(todo);
         return "redirect:/todo";
     }

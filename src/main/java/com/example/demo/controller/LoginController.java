@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 	@GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("messages", "party boy");
-
         return "login";
     }
 }

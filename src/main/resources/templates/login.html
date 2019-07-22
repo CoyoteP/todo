@@ -2,39 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Login Form</title>
+<title>Rtina</title>
+<script type="text/javascript" src="webjars/jquery/3.3.1/jquery.min.js"></script>
+
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 
 <body>
+
 	<header>
 		<div class="row">
 			<div class="col-md-3 offset-md-1 text-center">
-				<form role="form" id="manage" th:action="@{/manage}" method="get"></form>
+				<img src="/img/logo_blue.png" th:src="@{/img/logo_blue.png}"
+					class="img-fluid"></img>
 			</div>
 			<div class="col-md-3 offset-md-4 text-center">
-				<form role="form" id="logout" th:action="@{/signup}" method="get">
-					<button type="submit">サインイン</button>
+				<form role="form" id="register" th:action="@{/register}"
+					method="get">
+					<br>
+					<button class="btn btn-outline-light" type="submit">登録</button>
 				</form>
 			</div>
 		</div>
 	</header>
+	<br />
+	<br />
 	<div class="container">
 		<br />
-		<div th:if="${param.error}">Invalid username and password.</div>
-		<form class="form-signin" method="post" th:action="@{'/auth'}">
-			<h2 class="form-signin-heading">Please login</h2>
-			<input type="text" class="form-control" name="userid"
-				placeholder="UserId" required="" autofocus="" /> <input
-				type="password" class="form-control" name="password"
-				placeholder="Password" required="" /> <label class="checkbox">
-				<input type="checkbox" value="remember-me" id="rememberMe"
-				name="rememberMe"> Remember me
-			</label>
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		</form>
+		<section id="title">
+			<div class="row ">
+				<div class="col-md-6 offset-md-3 text-center">
+					<h1>ログイン</h1>
+				</div>
+			</div>
+		</section>
+		<div class="row">
+			<div class="col-md-6 offset-md-3"　>
+				<form class="form-signin" method="post" th:action="@{'/auth'}" id="login">
+					<input type="text"  class="form-control" name="userid"
+						placeholder="ユーザID" required="" autofocus="" /> <input
+						type="password" class="form-control" name="password"
+						placeholder="パスワード" required="" /> <label class="checkbox">
+						<input type="checkbox" value="remember-me" id="rememberMe"
+						name="rememberMe"> Remember me
+					</label>
+				</form>
+				<div class="row">
+					<div class="col-md-4 offset-md-1">
+						<form method="get" th:action="@{'/register'}">
+							<button class="btn btn-lg btn-primary btn-block" type="submit">登録</button>
+						</form>
+					</div>
+					<div class="col-md-4 offset-md-2">
+						<button class="btn btn-lg btn-primary btn-block" form="login"
+							type="submit">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 

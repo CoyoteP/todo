@@ -30,18 +30,19 @@ public class ManageController {
         return "manage";
     }
 	@PostMapping(value = "/manage",params = "update")
-    public String update(RedirectAttributes attributes,Principal principal, @RequestParam("password-old") String password_old,@RequestParam("password") String password,@RequestParam("password-retype") String password_retype) {
+    public String update(RedirectAttributes attributes,Principal principal, @RequestParam("password") String password,@RequestParam("password-new") String password_new,@RequestParam("password-retype") String password_retype) {
 		
 		String result = "";
+		System.out.println(principal.getName() + " : " + password);
 		if(userRepo.countByUseridIsAndPasswordIs(principal.getName(),password) == 1) {
-			if(password.equals(password_retype)) {
-				int updateColumn = userRepo.updateByUserid(password, principal.getName());
+			if(password_new.equals(password_retype)) {
+				userRepo.updateByUserid(password_new, principal.getName());
 				result = "更新しました。";
 			}else {
-				result = "password-retypeの値が異なります";
+				result = "再入力されたパスワードが違います";
 			}
 		}else {
-			result = "現在のパスワードが異なります";
+			result = "現在のパスワードが違います";
 			attributes.addFlashAttribute("result",result);
 		}
         return "redirect:/manage";
@@ -49,8 +50,7 @@ public class ManageController {
     }
 	@PostMapping(value = "/manage",params = "delete")
     public String delete(RedirectAttributes attributes,Principal principal) {
-		
-		int result = userRepo.deleteByUserid(principal.getName());
+		userRepo.deleteByUserid(principal.getName());
         return "redirect:/login";
     }
 }
