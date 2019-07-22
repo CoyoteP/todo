@@ -38,6 +38,8 @@ public class RegisterController {
 	public String post(Model model, @ModelAttribute User user) {
 		String result = "";
 		if (userRepo.countByUserid(user.getUserid()) == 0) {
+			user.setEnable("1");
+			user.setRole("user");
 			userRepo.save(user);
 			return "login";
 		} else {

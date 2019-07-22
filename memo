@@ -21,10 +21,3 @@ create table users(
 	enable varchar(255),
     role varchar(255)
 )
-
-create table todo(
-    todoid varchar(255) primary key,
-    body varchar(255),
-    todoflg varchar(255),
-    userid varchar(255)
-    )
