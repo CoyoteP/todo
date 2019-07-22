@@ -9,7 +9,7 @@ public class TodoController {
 	@GetMapping("/todo")
     public String login(Model model) {
         model.addAttribute("messages", "party boy");
-
+        
         return "todo";
     }
 }

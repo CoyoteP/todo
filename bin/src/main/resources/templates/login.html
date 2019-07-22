@@ -8,8 +8,7 @@
 </head>
 
 <body>
-	<div class="container">
-	<br />
+	<div class="wrapper">
 		<div th:if="${param.error}">Invalid username and password.</div>
 		<form class="form-signin" method="post" th:action="@{'/auth'}">
 			<h2 class="form-signin-heading">Please login</h2>

@@ -3,13 +3,49 @@
 <head>
 <meta charset="UTF-8" />
 <title>Login Form</title>
-<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-  <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<h1 th:text="${message}"></h1>
-	<h1 th:text="${menu}"></h1>
-	ok?
+	<div class="container">
+		<br />
+		<div th:if="${param.error}">Invalid username and password.</div>
+		<form class="signup" method="post" th:action="@{'/auth'}">
+			<h2 class="form-signin-heading">新規登録フォーム</h2>
+			<input type="text" class="form-control" name="userid"
+				placeholder="UserId" required="" autofocus="" /> <input
+				type="password" class="form-control" name="password"
+				placeholder="Password" required="" /> 
+				<input
+				type="password" class="form-control" name="retype-password"
+				placeholder="retype-Password" required="" /> <label class="checkbox">
+				<input type="checkbox" value="remember-me" id="rememberMe"
+				name="rememberMe"> Remember me
+			</label>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+		</form>
+	</div>
+	
+	<section id="list">
+			<div class="row ">
+				<div class="table-responsive col-md-10 offset-md-1">
+					<table class="table table-bordered">
+						<tr>
+							<th>内容</th>
+							<th>編集</th>
+							<th>完了</th>
+						</tr>
+						<tr th:each="user:${list}"  th:object="${user}">
+							<td th:text="*{userid}"></td>
+							<td>update</td>
+							<td>exit</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</section>
 </body>
+
 </html>
