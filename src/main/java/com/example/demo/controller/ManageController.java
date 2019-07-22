@@ -30,10 +30,10 @@ public class ManageController {
         return "manage";
     }
 	@PostMapping(value = "/manage",params = "update")
-    public String update(RedirectAttributes attributes,Principal principal, @RequestParam("password-old") String password_old,@RequestParam("password") String password,@RequestParam("password-retype") String password_retype) {
+    public String update(RedirectAttributes attributes,Principal principal, @RequestParam("password") String password_old,@RequestParam("password") String password,@RequestParam("password-retype") String password_retype) {
 		
 		String result = "";
-		if(userRepo.countByUseridIsAndPasswordIs(principal.getName(),password) == 1) {
+		if(userRepo.countByUseridIsAndPasswordIs(principal.getName(),password_old) == 1) {
 			if(password.equals(password_retype)) {
 				int updateColumn = userRepo.updateByUserid(password, principal.getName());
 				result = "更新しました。";
