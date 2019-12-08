@@ -28,3 +28,9 @@ jobs: #②
       
       - store_artifacts: #⑮
           path: target/demo-java-spring-0.0.1-SNAPSHOT.jar
+  deploy:
+
+    steps:
+
+    - add_ssh_keys:
+    - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /root/docker/todo && docker-compose up –d –-no-cache'
