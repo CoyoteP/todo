@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private DataSource dataSource;
 
-	// not using seculity folder
+	// not using seculity folder!
 	@Override
 	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/css/**", "/image/**", "/js/**", "/webjars/**");
