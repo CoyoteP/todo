@@ -1,4 +1,4 @@
-version: 2.1 #�?
+version: 2.1 #①
 jobs: #②
   build: #③
     
@@ -33,6 +33,4 @@ jobs: #②
     steps:
 
     - add_ssh_keys:
-    - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /root/docker/todo && docker-compose up ?d ?-no-cache'
-
-
+    - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /root/docker/todo && docker-compose up –d –-no-cache'
