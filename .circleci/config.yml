@@ -1,36 +1,37 @@
-version: 2.1 #①
-jobs: #②
-  build: #③
+version: 2.1 #1
+jobs: #2
+  build: #3
     
-    working_directory: ~/circleci-demo-java-spring #④
+    working_directory: ~/circleci-demo-java-spring #4
 
-    docker: #⑤
-      - image: circleci/openjdk:8-jdk-stretch #⑥
+    docker: #5
+      - image: circleci/openjdk:8-jdk-stretch #6
 
-    steps: #⑦
+    steps: #7
 
-      - checkout #⑧
+      - checkout #8
 
-      - restore_cache: #⑨
+      - restore_cache: #9
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
-      - run: mvn dependency:go-offline #⑩
+      - run: mvn dependency:go-offline #10
       
-      - save_cache: #⑫
+      - save_cache: #11
           paths:
             - ~/.m2
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
-      - run: mvn package #⑬
+      - run: mvn package #12
       
-      - store_test_results: #⑭
+      - store_test_results: #13
           path: target/surefire-reports
       
-      - store_artifacts: #⑮
+      - store_artifacts: #14
           path: target/demo-java-spring-0.0.1-SNAPSHOT.jar
   deploy:
-
+    machine:
+      image: circleci/classic:edge
     steps:
-
+      - checkout
     - add_ssh_keys:
-    - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /root/docker/todo && docker-compose up –d –-no-cache'
+    - run: ssh ${USER_NAME}@${HOST_NAME} "cd /root/docker/todo && docker-compose up ?d ?-no-cache"
