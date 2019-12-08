@@ -33,5 +33,4 @@ jobs: #2
           fingerprints:
             - "40:bb:ba:55:97:ff:3c:77:11:57:a9:35:a0:45:ca:49"
 
-      - deploy:
-          - run: ssh ${USER_NAME}@${HOST_NAME} "cd /root/docker/todo && docker-compose up -d --no-cache"
+      - run: ssh ${USER_NAME}@${HOST_NAME} "cd /root/docker/todo && docker-compose up -d --no-cache"
