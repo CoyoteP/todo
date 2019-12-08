@@ -31,6 +31,6 @@ jobs: #2
 
       - add_ssh_keys:
           fingerprints:
-            - "15:96:78:92:65:76:6c:8b:d5:53:28:03:2a:4c:77:fe"
+            - "84:ac:5b:e5:0c:ae:3f:5b:f6:26:e6:13:b3:ec:38:7c"
 
       - run: ssh -oStrictHostKeyChecking=yes ${USER_NAME}@${HOST_NAME} "cd /root/docker/todo && docker-compose up -d --no-cache"
