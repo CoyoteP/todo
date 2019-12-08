@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// not using seculity folder
 	@Override
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web) {
 		web.ignoring().antMatchers("/css/**", "/image/**", "/js/**", "/webjars/**");
 	}
 
