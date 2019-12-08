@@ -33,4 +33,4 @@ jobs: #2
           fingerprints:
             - "15:96:78:92:65:76:6c:8b:d5:53:28:03:2a:4c:77:fe"
 
-      - run: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} "cd /root/docker/todo && docker-compose up -d"
+      - run: ssh -o StrictHostKeyChecking=no ${USER_NAME}@${HOST_NAME} "cd /root/docker/todo && docker-compose up -d --build --force-recreate"
